@@ -5,14 +5,31 @@
   "main": "index.ts",
   "scripts": {
     "serve": "webpack serve --config webpack.dev.config.ts",
-    "build": "webpack serve --config webpack.prod.config.ts",
+    "build": "webpack --config webpack.prod.config.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.6.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.5"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
@@ -22,19 +39,29 @@
     "@babel/preset-typescript": "^7.15.0",
     "@babel/runtime": "^7.15.4",
     "@types/fork-ts-checker-webpack-plugin": "^0.4.5",
+    "@types/node": "^16.10.1",
     "@types/react": "^17.0.24",
     "@types/react-dom": "^17.0.9",
+    "@types/react-redux": "^7.1.18",
     "@types/webpack-dev-server": "^4.1.0",
     "@typescript-eslint/eslint-plugin": "^4.31.2",
     "@typescript-eslint/parser": "^4.31.2",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^9.0.1",
+    "css-loader": "^6.3.0",
+    "dotenv": "^10.0.0",
+    "dotenv-cli": "^4.0.0",
     "eslint": "^7.32.0",
     "eslint-plugin-react": "^7.26.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-webpack-plugin": "^3.0.1",
     "fork-ts-checker-webpack-plugin": "^6.3.3",
     "html-webpack-plugin": "^5.3.2",
+    "node-sass": "^6.0.1",
+    "sass": "^1.42.1",
+    "sass-loader": "^12.1.0",
+    "style-loader": "^3.3.0",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.3",
     "webpack": "^5.54.0",

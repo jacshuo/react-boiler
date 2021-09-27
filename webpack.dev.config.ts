@@ -7,6 +7,7 @@ import ESLintPlugin from 'eslint-webpack-plugin'
 const config: Configuration = {
     mode:'development',
     output:{
+        path:'/',
         publicPath:'/'
     },
     entry:'./src/index.tsx',
@@ -22,9 +23,21 @@ const config: Configuration = {
                             '@babel/preset-env',
                             '@babel/preset-react',
                             '@babel/preset-typescript'
-                        ]
+                        ],
+                        sourceMap:true
                     }
                 }
+            },
+            {
+                test:/\.s[ac]ss$/i,
+                exclude:/node_modules/,
+                use:['style-loader', 'css-loader', {
+                    loader:'sass-loader',
+                    options:{
+                        sourceMap:true,
+                        implementation:require('sass')
+                    }
+                }]
             }
         ]
     },
@@ -33,7 +46,10 @@ const config: Configuration = {
     },
     plugins:[
         new HtmlWebpackPlugin({
-            template:'public/index.html'
+            template:path.resolve(__dirname, 'public', 'index.html'),
+            favicon:'./public/favicon.ico',
+            title:'测试',
+            inject:'body'
         }),
         new HotModuleReplacementPlugin(),
         // used the async flag to tell Webpack to wait for the type checking process to finish before it emits any code
@@ -47,7 +63,7 @@ const config: Configuration = {
     ],
     devtool:'inline-source-map',
     devServer:{
-        static:path.join(__dirname, 'build'),
+        static:path.join(__dirname, 'public'),
         historyApiFallback:true,
         port:4000,
         open:true,
